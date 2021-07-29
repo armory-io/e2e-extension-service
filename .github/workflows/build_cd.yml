@@ -24,4 +24,4 @@ jobs:
 
       - name: Run Checks And Build
         run: |
-          ./gradlew check build
+          ./gradlew check build -PcdBuild=true -Partifactory_user=${{secrets.ARTIFACTORY_USER}} -Partifactory_password=${{secrets.ARTIFACTORY_PASSWORD}}
