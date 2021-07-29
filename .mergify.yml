@@ -1,0 +1,13 @@
+pull_request_rules:
+  - name: Automatically merge base service updates
+    conditions:
+      - check-success=Build CD
+      - label=baseServiceUpdate
+      - files=gradle.properties
+      - "#files=1"
+    actions:
+      merge:
+        method: squash
+        strict: smart
+      label:
+        add: ["auto merged"]

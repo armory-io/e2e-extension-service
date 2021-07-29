@@ -1,0 +1,27 @@
+name: Build CD
+
+on:
+  pull_request:
+    branches:
+      - main
+      - "release-[0-9]+.[0-9]+.x"
+
+jobs:
+  build:
+    name: Build CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Fetch full history
+        run: git fetch --prune --tags --unshallow
+
+      - name: Set Up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Run Checks And Build
+        run: |
+          ./gradlew check build
