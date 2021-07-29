@@ -1,5 +1,5 @@
-
 plugins {
+    id 'io.armory.settings' version '1.7.0'
     id 'java'
 }
 
@@ -16,3 +16,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+docker {
+    copySpec.from("build/libs").into("jar")
+}
+
+tasks.docker.dependsOn("jar")
+tasks.docker.mustRunAfter("jar")
