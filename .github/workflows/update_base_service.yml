@@ -13,7 +13,7 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.branch }}
 
-      - name: Write Orca Version
+      - name: Write Base Version
         env:
           VERSION: ${{ github.event.client_payload.version }}
         run: |
@@ -22,9 +22,9 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.ASTROLABE_GITHUB_TOKEN }}
-          commit-message: "chore(cd): update base orca version to ${{ github.event.client_payload.version }}"
+          commit-message: "chore(cd): update base version to ${{ github.event.client_payload.version }}"
           branch: ${{ github.event.client_payload.version }}
           branch-suffix: timestamp
-          title: "chore(cd): update base orca version to ${{ github.event.client_payload.version }}"
+          title: "chore(cd): update base version to ${{ github.event.client_payload.version }}"
           labels: |
             baseServiceUpdate
