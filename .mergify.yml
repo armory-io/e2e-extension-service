@@ -13,6 +13,6 @@ pull_request_rules:
     actions:
       queue:
         method: merge
-        strict: default
+        name: default
       label:
         add: ["auto merged"]
